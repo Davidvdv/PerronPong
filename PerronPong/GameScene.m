@@ -38,7 +38,6 @@
                 NSLog(@"%@", error);
             }
             userMotion = deviceMotion.attitude.roll;
-            NSLog(@"%f", userMotion);
         }];
     }
     return self;

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 #import "GameViewController.h"
 
 @interface PickImageViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
