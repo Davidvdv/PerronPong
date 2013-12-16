@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1999C80A-0154-4E53-B2D1-D8CABA422F13</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PerronPong</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FB524547-60E9-4031-B0D1-C41ACC25BAC6</key>
+		<string>ssh://github.com/Davidvdv/PerronPong.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PerronPong.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FB524547-60E9-4031-B0D1-C41ACC25BAC6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/Davidvdv/PerronPong.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FB524547-60E9-4031-B0D1-C41ACC25BAC6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FB524547-60E9-4031-B0D1-C41ACC25BAC6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PerronPong</string>
+		</dict>
+	</array>
+</dict>
+</plist>

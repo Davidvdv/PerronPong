@@ -23,15 +23,10 @@
     // Create and configure the scene.
     GameScene *scene = [[GameScene alloc] initWithSize:skView.bounds.size andBackgroundImage:_backgroundImage];
     //GameScene *scene = [[GameScene alloc] initWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.scaleMode = SKSceneScaleModeFill;
     
     // Present the scene.
     [skView presentScene:scene];
-}
-
-- (BOOL)shouldAutorotate
-{
-    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

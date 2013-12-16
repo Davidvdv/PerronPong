@@ -8,10 +8,9 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import "Ball.h"
 
-@interface GameScene : SKScene {
-    double userMotion;
-}
+@interface GameScene : SKScene
 
 @property (strong, nonatomic) UIImage *backgroundImage;
 @property (strong, nonatomic) CMMotionManager *gameMotionManager;

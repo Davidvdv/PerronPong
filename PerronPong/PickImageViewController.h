@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *chosenImage;
 
 - (IBAction)takePhoto:(id)sender;
+- (UIImage *) cropImage:(UIImage *)originalImage cropSize:(CGSize)cropSize;
 
 @end

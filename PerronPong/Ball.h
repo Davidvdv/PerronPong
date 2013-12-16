@@ -10,4 +10,7 @@
 
 @interface Ball : SKShapeNode
 
+@property (assign, nonatomic) int speedX;
+@property (assign, nonatomic) int speedY;
+
 @end
