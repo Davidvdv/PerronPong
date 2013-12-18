@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SpriteKit/SpriteKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreMotion/CoreMotion.h>
+#import "BallView.h"
 
 @interface GameViewController : UIViewController
 
-@property (strong, nonatomic) UIImage *backgroundImage;
+@property (strong, nonatomic) BallView *ball;
+@property (strong, nonatomic) CMMotionManager *gameMotionManager;
+
+-(void) createBall;
 
 @end

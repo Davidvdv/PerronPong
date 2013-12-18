@@ -7,7 +7,6 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
 
 @implementation GameViewController
 
@@ -15,18 +14,48 @@
 {
     [super viewDidLoad];
     
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    [self startCameraPreview];
+    [self createBall];
+
+    self.gameMotionManager = [[CMMotionManager alloc] init];
+    [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
+        if(error) {
+            NSLog(@"%@", error);
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            double pitch = deviceMotion.rotationRate.x*15;
+            NSLog(@"%f",pitch);
+            double roll = deviceMotion.attitude.roll *25; // x
+            [_ball moveByX:roll andY:pitch];
+        });
+    }];
+}
+
+-(void)createBall {
+    _ball = [[BallView alloc] initWithFrame:CGRectMake(200, 300, 50, 50)];
+    [self.view addSubview:_ball];
+    [_ball ponging];
+}
+
+-(void)startCameraPreview {
+    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    session.sessionPreset = AVCaptureSessionPresetMedium;
     
-    // Create and configure the scene.
-    GameScene *scene = [[GameScene alloc] initWithSize:skView.bounds.size andBackgroundImage:_backgroundImage];
-    //GameScene *scene = [[GameScene alloc] initWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeFill;
+    AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    captureVideoPreviewLayer.frame = self.view.bounds;
     
-    // Present the scene.
-    [skView presentScene:scene];
+    [self.view.layer addSublayer:captureVideoPreviewLayer];
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error = nil;
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    if (!input) {
+        // Handle the error appropriately.
+        NSLog(@"ERROR: trying to open camera: %@", error);
+    }
+    
+    [session addInput:input];
+    [session startRunning];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
