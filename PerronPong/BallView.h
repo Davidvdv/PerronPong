@@ -10,6 +10,8 @@
 
 @interface BallView : UIView
 
+@property (readonly, nonatomic) BOOL isInFront;
+
 -(CGPoint) position;
 -(void) moveByX:(CGFloat)speedY andY:(CGFloat)speedX;
 -(void) ponging;

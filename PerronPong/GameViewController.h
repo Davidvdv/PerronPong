@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) BallView *ball;
 @property (strong, nonatomic) CMMotionManager *gameMotionManager;
+@property (weak, nonatomic) IBOutlet UILabel *scoreBoardLabel;
 
 -(void) createBall;
 

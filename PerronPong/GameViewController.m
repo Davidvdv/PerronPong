@@ -16,6 +16,9 @@
     
     [self startCameraPreview];
     [self createBall];
+    [self.scoreBoardLabel setText:0];
+    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 
     self.gameMotionManager = [[CMMotionManager alloc] init];
     [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
@@ -24,11 +27,14 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             double pitch = deviceMotion.rotationRate.x*15;
-            NSLog(@"%f",pitch);
             double roll = deviceMotion.attitude.roll *25; // x
             [_ball moveByX:roll andY:pitch];
         });
     }];
+}
+
+-(void) update:(CADisplayLink*)displayLink {
+    
 }
 
 -(void)createBall {
@@ -71,6 +77,11 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.gameMotionManager stopDeviceMotionUpdates];
 }
 
 @end

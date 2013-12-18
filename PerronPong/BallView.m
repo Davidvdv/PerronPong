@@ -50,8 +50,10 @@
         CGFloat size;
         if (frame.size.width == 10) {
             size = 50;
+            _isInFront = YES;
         } else {
             size = 10;
+            _isInFront = NO;
         }
         frame.size.width = size;
         frame.size.height = size;
