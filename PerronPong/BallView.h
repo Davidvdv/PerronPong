@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BallViewDelegate <NSObject>
+
+-(void)ballIsOutOfBounds;
+
+@end
+
 @interface BallView : UIView
 
 @property (readonly, nonatomic) UIColor *ballColor;
 @property (readonly, nonatomic) BOOL isInFront;
+@property (weak, nonatomic) id <BallViewDelegate> delegate;
 
 -(CGPoint) position;
 -(void) moveXBy:(CGFloat)speedY andYBy:(CGFloat)speedX;

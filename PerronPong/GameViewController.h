@@ -11,7 +11,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "BallView.h"
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <BallViewDelegate>
 
 @property (strong, nonatomic) BallView *ball;
 @property (strong, nonatomic) CMMotionManager *gameMotionManager;

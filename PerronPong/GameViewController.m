@@ -29,19 +29,21 @@
     [_shootBallSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.view addGestureRecognizer:_shootBallSwipe];
     
-    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+//    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
+//    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 
     self.gameMotionManager = [[CMMotionManager alloc] init];
 }
 
+-(void)ballIsOutOfBounds {
+    NSLog(@"ballIsOutOfBounds");
+    NSInteger currentScore = [_scoreBoardLabel.text integerValue];
+    currentScore++;
+    [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
+}
+
 -(void) update:(CADisplayLink*)displayLink {
     if(_ball.isInFront && !CGRectIntersectsRect(_ball.frame, self.gameView.frame)) {
-        [displayLink invalidate];
-        NSLog(@"%d", (int)CGRectIntersectsRect(_ball.frame, self.gameView.frame));
-        NSInteger currentScore = [_scoreBoardLabel.text integerValue];
-        currentScore++;
-        [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
     }
 }
 
@@ -53,6 +55,7 @@
 
 -(void)createBall {
     _ball = [[BallView alloc] initWithFrame:CGRectMake(150, 200, 300, 300) andColor:[UIColor redColor]];
+    _ball.delegate = self;
     [self.gameView addSubview:_ball];
     [_ball ponging];
     ballCounter++;

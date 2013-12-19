@@ -77,6 +77,10 @@
         self.frame = frame;
     }completion:^(BOOL complete){
         [self ponging];
+        
+        if(!CGRectIntersectsRect(self.frame, self.superview.frame)) {
+            [self.delegate ballIsOutOfBounds];
+        }
     }];
 }
 
