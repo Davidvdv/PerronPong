@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BallView.h"
+#import "GameViewController.h"
 
 @interface IntroViewController : UIViewController
 

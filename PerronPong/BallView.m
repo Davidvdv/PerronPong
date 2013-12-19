@@ -43,10 +43,17 @@
     CGContextFillPath(context);
 }
 
--(void) moveByX:(CGFloat)speedX andY:(CGFloat)speedY{
+-(void) moveXBy:(CGFloat)speedX andYBy:(CGFloat)speedY {
     CGRect rect = self.frame;
     rect.origin.x += speedX;
     rect.origin.y += speedY;
+    self.frame = rect;
+}
+
+-(void) moveXTo:(CGFloat)xCordinate andYTo:(CGFloat)yCordinate {
+    CGRect rect = self.frame;
+    rect.origin.x = xCordinate;
+    rect.origin.y = yCordinate;
     self.frame = rect;
 }
 
@@ -60,12 +67,10 @@
         CGFloat size;
         if (frame.size.width == 10) {
             size = 300;
-            NSLog(@"%f %f",self.position.x, self.position.y);
             _isInFront = YES;
         } else {
             size = 10;
             _isInFront = NO;
-            NSLog(@"%f %f",self.position.x, self.position.y);
         }
         frame.size.width = size;
         frame.size.height = size;

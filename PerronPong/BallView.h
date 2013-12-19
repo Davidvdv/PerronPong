@@ -14,7 +14,8 @@
 @property (readonly, nonatomic) BOOL isInFront;
 
 -(CGPoint) position;
--(void) moveByX:(CGFloat)speedY andY:(CGFloat)speedX;
+-(void) moveXBy:(CGFloat)speedY andYBy:(CGFloat)speedX;
+-(void) moveXTo:(CGFloat)xCordinate andYTo:(CGFloat)yCordinate;
 -(void) ponging;
 
 -(id)initWithFrame:(CGRect)frame andColor:(UIColor *)ballColor;

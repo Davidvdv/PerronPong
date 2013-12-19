@@ -14,8 +14,7 @@
 
 @implementation IntroViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -23,11 +22,11 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
-    _introBall = [[BallView alloc] initWithFrame:CGRectMake(201, 200, 50, 50) andColor:[UIColor redColor]];
+    _introBall = [[BallView alloc] initWithFrame:CGRectMake(208, 350, 30, 30) andColor:[UIColor colorWithRed:200 green:200 blue:200 alpha:1]];
     [self.view addSubview:_introBall];
     
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
@@ -36,8 +35,12 @@
 }
 
 -(void)swipeHandler {
-    [UIView animateWithDuration:2 animations:^{
-        [_introBall moveByX:_introBall.position.x andY:87];
+    [UIView animateWithDuration:1 animations:^{
+        [_introBall moveXTo:208 andYTo:29];
+    } completion:^(BOOL finished){
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GameViewController *gameViewController = [sb instantiateViewControllerWithIdentifier:@"GameViewController"];
+        [self.navigationController pushViewController:gameViewController animated:YES];
     }];
 }
 

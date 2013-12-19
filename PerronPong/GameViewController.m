@@ -23,20 +23,22 @@
     ballCounter = 0;
     
     [self startCameraPreview];
-    [self.scoreBoardLabel setText:0];
+    [self.scoreBoardLabel setText:@"0"];
     
     _shootBallSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(shootBall)];
     [_shootBallSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.view addGestureRecognizer:_shootBallSwipe];
     
-//    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
-//    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 
     self.gameMotionManager = [[CMMotionManager alloc] init];
 }
 
 -(void) update:(CADisplayLink*)displayLink {
-    if(_ball.isInFront) {
+    if(_ball.isInFront && !CGRectIntersectsRect(_ball.frame, self.gameView.frame)) {
+        [displayLink invalidate];
+        NSLog(@"%d", (int)CGRectIntersectsRect(_ball.frame, self.gameView.frame));
         NSInteger currentScore = [_scoreBoardLabel.text integerValue];
         currentScore++;
         [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
@@ -50,9 +52,8 @@
 }
 
 -(void)createBall {
-    NSLog(@"%d",ballCounter);
-    _ball = [[BallView alloc] initWithFrame:CGRectMake(150, 200, 300, 300) andColor:[UIColor blueColor]];
-    [self.view addSubview:_ball];
+    _ball = [[BallView alloc] initWithFrame:CGRectMake(150, 200, 300, 300) andColor:[UIColor redColor]];
+    [self.gameView addSubview:_ball];
     [_ball ponging];
     ballCounter++;
 
@@ -61,7 +62,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             double pitch = deviceMotion.rotationRate.x*5;
             double roll = deviceMotion.attitude.roll *25;
-            [_ball moveByX:roll andY:pitch];
+            [_ball moveXBy:roll andYBy:pitch];
         });
     }];
 }
@@ -73,7 +74,7 @@
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     captureVideoPreviewLayer.frame = self.view.bounds;
     
-    [self.view.layer addSublayer:captureVideoPreviewLayer];
+    [self.previewCameraView.layer addSublayer:captureVideoPreviewLayer];
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSError *error = nil;
