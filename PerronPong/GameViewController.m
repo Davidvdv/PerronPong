@@ -8,39 +8,62 @@
 
 #import "GameViewController.h"
 
+@interface GameViewController () {
+    int ballCounter;
+}
+
+@end
+
 @implementation GameViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    ballCounter = 0;
+    
     [self startCameraPreview];
-    [self createBall];
     [self.scoreBoardLabel setText:0];
-    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    
+    _shootBallSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(shootBall)];
+    [_shootBallSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self.view addGestureRecognizer:_shootBallSwipe];
+    
+//    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update:)];
+//    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 
     self.gameMotionManager = [[CMMotionManager alloc] init];
-    [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
-        if(error) {
-            NSLog(@"%@", error);
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            double pitch = deviceMotion.rotationRate.x*15;
-            double roll = deviceMotion.attitude.roll *25; // x
-            [_ball moveByX:roll andY:pitch];
-        });
-    }];
 }
 
 -(void) update:(CADisplayLink*)displayLink {
-    
+    if(_ball.isInFront) {
+        NSInteger currentScore = [_scoreBoardLabel.text integerValue];
+        currentScore++;
+        [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
+    }
+}
+
+-(void)shootBall {
+    NSLog(@"shootBall");
+    [self createBall];
+    [self.view removeGestureRecognizer:_shootBallSwipe];
 }
 
 -(void)createBall {
-    _ball = [[BallView alloc] initWithFrame:CGRectMake(200, 300, 50, 50)];
+    NSLog(@"%d",ballCounter);
+    _ball = [[BallView alloc] initWithFrame:CGRectMake(150, 200, 300, 300) andColor:[UIColor blueColor]];
     [self.view addSubview:_ball];
     [_ball ponging];
+    ballCounter++;
+
+    [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
+        if(error) { NSLog(@"%@", error); }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            double pitch = deviceMotion.rotationRate.x*5;
+            double roll = deviceMotion.attitude.roll *25;
+            [_ball moveByX:roll andY:pitch];
+        });
+    }];
 }
 
 -(void)startCameraPreview {

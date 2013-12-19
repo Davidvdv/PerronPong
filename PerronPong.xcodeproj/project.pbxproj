@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6342D3D218632AE700533BD4 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6342D3D118632AE700533BD4 /* IntroViewController.m */; };
 		634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA0185B142200525177 /* CoreMotion.framework */; };
 		634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA2185B29D700525177 /* AVFoundation.framework */; };
 		63597379184C970D0026E2C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63597378184C970D0026E2C2 /* Foundation.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6342D3D018632AE700533BD4 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		6342D3D118632AE700533BD4 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		634BDAA0185B142200525177 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		634BDAA2185B29D700525177 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		63597375184C970D0026E2C2 /* PerronPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerronPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +131,8 @@
 				63597389184C970D0026E2C2 /* AppDelegate.h */,
 				6359738A184C970D0026E2C2 /* AppDelegate.m */,
 				6359738C184C970D0026E2C2 /* Main.storyboard */,
+				6342D3D018632AE700533BD4 /* IntroViewController.h */,
+				6342D3D118632AE700533BD4 /* IntroViewController.m */,
 				6359738F184C970D0026E2C2 /* GameViewController.h */,
 				63597390184C970D0026E2C2 /* GameViewController.m */,
 				63BCCEED1861B1D80041ACBE /* BallView.h */,
@@ -268,6 +273,7 @@
 				63BCCEEF1861B1D80041ACBE /* BallView.m in Sources */,
 				6359738B184C970D0026E2C2 /* AppDelegate.m in Sources */,
 				63597387184C970D0026E2C2 /* main.m in Sources */,
+				6342D3D218632AE700533BD4 /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

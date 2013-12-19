@@ -10,10 +10,13 @@
 
 @interface BallView : UIView
 
+@property (readonly, nonatomic) UIColor *ballColor;
 @property (readonly, nonatomic) BOOL isInFront;
 
 -(CGPoint) position;
 -(void) moveByX:(CGFloat)speedY andY:(CGFloat)speedX;
 -(void) ponging;
+
+-(id)initWithFrame:(CGRect)frame andColor:(UIColor *)ballColor;
 
 @end

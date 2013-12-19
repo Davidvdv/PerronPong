@@ -20,6 +20,16 @@
     return self;
 }
 
+-(id)initWithFrame:(CGRect)frame andColor:(UIColor *)ballColor {
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        self.backgroundColor = [UIColor clearColor];
+        _ballColor = ballColor;
+    }
+    return self;
+}
+
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -27,10 +37,10 @@
 {
     [super drawRect:rect];
     // Drawing code
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextAddEllipseInRect(ctx, rect);
-    CGContextSetFillColor(ctx, CGColorGetComponents([[UIColor blueColor] CGColor]));
-    CGContextFillPath(ctx);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextAddEllipseInRect(context, rect);
+    CGContextSetFillColor(context, CGColorGetComponents([_ballColor CGColor]));
+    CGContextFillPath(context);
 }
 
 -(void) moveByX:(CGFloat)speedX andY:(CGFloat)speedY{
@@ -49,11 +59,13 @@
         CGRect frame = self.frame;
         CGFloat size;
         if (frame.size.width == 10) {
-            size = 50;
+            size = 300;
+            NSLog(@"%f %f",self.position.x, self.position.y);
             _isInFront = YES;
         } else {
             size = 10;
             _isInFront = NO;
+            NSLog(@"%f %f",self.position.x, self.position.y);
         }
         frame.size.width = size;
         frame.size.height = size;
