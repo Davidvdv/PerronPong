@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		63305215186445AC00336642 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63305214186445AC00336642 /* Images.xcassets */; };
-		6330521918644FB800336642 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6330521818644FB800336642 /* GameKit.framework */; };
 		6342D3D218632AE700533BD4 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6342D3D118632AE700533BD4 /* IntroViewController.m */; };
 		634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA0185B142200525177 /* CoreMotion.framework */; };
 		634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA2185B29D700525177 /* AVFoundation.framework */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		63305214186445AC00336642 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6330521818644FB800336642 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		6342D3D018632AE700533BD4 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
 		6342D3D118632AE700533BD4 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		634BDAA0185B142200525177 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -76,7 +74,6 @@
 				634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */,
 				634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */,
 				6359737B184C970D0026E2C2 /* CoreGraphics.framework in Frameworks */,
-				6330521918644FB800336642 /* GameKit.framework in Frameworks */,
 				6359737D184C970D0026E2C2 /* UIKit.framework in Frameworks */,
 				63597379184C970D0026E2C2 /* Foundation.framework in Frameworks */,
 			);
@@ -117,7 +114,6 @@
 		63597377184C970D0026E2C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6330521818644FB800336642 /* GameKit.framework */,
 				634BDAA2185B29D700525177 /* AVFoundation.framework */,
 				634BDAA0185B142200525177 /* CoreMotion.framework */,
 				63597378184C970D0026E2C2 /* Foundation.framework */,
@@ -227,7 +223,7 @@
 						DevelopmentTeam = QQNZ7Y938D;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

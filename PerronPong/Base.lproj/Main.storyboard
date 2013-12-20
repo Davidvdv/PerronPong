@@ -26,18 +26,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-EP-kDj">
-                                        <rect key="frame" x="20" y="20" width="280" height="43"/>
+                                        <rect key="frame" x="276" y="20" width="24" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="280" id="uNc-mX-l7h"/>
+                                            <constraint firstAttribute="width" constant="24" id="uNc-mX-l7h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <color key="textColor" red="0.88170855978260865" green="0.88170855978260865" blue="0.88170855978260865" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L44-aF-Zjs">
-                                        <rect key="frame" x="20" y="20" width="49" height="43"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L44-aF-Zjs">
+                                        <rect key="frame" x="20" y="20" width="28" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="1RH-e1-rf4"/>
+                                            <constraint firstAttribute="height" constant="43" id="IIy-mY-JrZ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                         <state key="normal" title="X">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,13 +51,37 @@
                                             <segue destination="qDH-Xd-Im2" kind="push" identifier="stopGameSegue" id="r03-Zs-aaU"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aantal ballen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yf-j1-HHp">
+                                        <rect key="frame" x="169" y="31" width="99" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.88170855979999996" green="0.88170855979999996" blue="0.88170855979999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Houd je vinger op het scherm om het balletje af te schieten" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-9T-Yti">
+                                        <rect key="frame" x="20" y="494" width="280" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="mJR-4A-15l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.88170855979999996" green="0.88170855979999996" blue="0.88170855979999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.19994832179872635" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="ISv-EP-kDj" firstAttribute="leading" secondItem="BlA-yA-pWG" secondAttribute="leading" constant="20" symbolic="YES" id="8Nh-vR-VzH"/>
+                                    <constraint firstItem="ISv-EP-kDj" firstAttribute="leading" secondItem="BlA-yA-pWG" secondAttribute="leading" constant="276" id="8Nh-vR-VzH"/>
                                     <constraint firstItem="ISv-EP-kDj" firstAttribute="top" secondItem="BlA-yA-pWG" secondAttribute="top" constant="20" symbolic="YES" id="LHz-n0-XkG"/>
+                                    <constraint firstItem="sVT-9T-Yti" firstAttribute="trailing" secondItem="ISv-EP-kDj" secondAttribute="trailing" id="WD5-u2-bkQ"/>
                                     <constraint firstAttribute="trailing" secondItem="ISv-EP-kDj" secondAttribute="trailing" constant="20" symbolic="YES" id="Zya-Ay-ooH"/>
+                                    <constraint firstItem="ISv-EP-kDj" firstAttribute="leading" secondItem="6Yf-j1-HHp" secondAttribute="trailing" constant="8" symbolic="YES" id="iZo-4F-MUY"/>
+                                    <constraint firstItem="sVT-9T-Yti" firstAttribute="leading" secondItem="L44-aF-Zjs" secondAttribute="leading" id="oCM-xM-m6r"/>
+                                    <constraint firstItem="L44-aF-Zjs" firstAttribute="centerY" secondItem="6Yf-j1-HHp" secondAttribute="centerY" id="op3-fF-LSP"/>
+                                    <constraint firstItem="L44-aF-Zjs" firstAttribute="baseline" secondItem="ISv-EP-kDj" secondAttribute="baseline" id="y2p-uA-2nz"/>
+                                    <constraint firstItem="sVT-9T-Yti" firstAttribute="leading" secondItem="BlA-yA-pWG" secondAttribute="leading" constant="20" symbolic="YES" id="yjK-rm-Op2"/>
+                                    <constraint firstAttribute="bottom" secondItem="sVT-9T-Yti" secondAttribute="bottom" constant="20" symbolic="YES" id="yrO-o9-6n6"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="t2h-2r-2ky" appends="YES" id="F2e-ve-gCq"/>
@@ -75,6 +103,7 @@
                     <navigationItem key="navigationItem" id="clS-D1-bfR"/>
                     <connections>
                         <outlet property="gameView" destination="BlA-yA-pWG" id="3Kr-QX-3gp"/>
+                        <outlet property="instructionLabel" destination="sVT-9T-Yti" id="7ZG-ij-6dP"/>
                         <outlet property="longPressForShootingBall" destination="t2h-2r-2ky" id="myd-By-740"/>
                         <outlet property="previewCameraView" destination="dOy-4E-WMs" id="Mt2-2h-xMt"/>
                         <outlet property="scoreBoardLabel" destination="ISv-EP-kDj" id="IWi-aG-gUv"/>
@@ -110,13 +139,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-dO-sbz">
                                 <rect key="frame" x="20" y="493" width="280" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="S31-ZP-AZm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Start game (of swipe ball omhoog)">
+                                <state key="normal" title="Start game (of swipe de bal omhoog)">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="9qq-zv-L80" kind="push" identifier="startGameSegue" id="g6N-CP-nNZ"/>

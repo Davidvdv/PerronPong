@@ -62,6 +62,8 @@
     
     // Remove the longpress gesture recognizer to prevent adding a new ball
     [self.gameView removeGestureRecognizer:_longPressForShootingBall];
+    
+    [_instructionLabel setHidden:YES];
 }
 
 -(void)createBallOnLocation:(CGPoint)location {
