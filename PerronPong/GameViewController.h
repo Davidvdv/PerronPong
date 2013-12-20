@@ -7,10 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SpriteKit/SpriteKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreMotion/CoreMotion.h>
+#import "BallView.h"
+#import "IntroViewController.h"
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <BallViewDelegate>
 
-@property (strong, nonatomic) UIImage *backgroundImage;
+@property (strong, nonatomic) BallView *ball;
+@property (strong, nonatomic) CMMotionManager *gameMotionManager;
+
+@property (weak, nonatomic) IBOutlet UIView *previewCameraView;
+@property (weak, nonatomic) IBOutlet UIView *gameView;
+@property (weak, nonatomic) IBOutlet UILabel *scoreBoardLabel;
+@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressForShootingBall;
+
+-(void) createBallOnLocation:(CGPoint)location;
+-(void) updateGameScore;
+-(void) gameIsOver;
 
 @end

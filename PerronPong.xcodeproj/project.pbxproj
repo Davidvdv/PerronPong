@@ -7,26 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		634BDA9F185B11EB00525177 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 634BDA9E185B11EB00525177 /* GameScene.m */; };
+		63305215186445AC00336642 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63305214186445AC00336642 /* Images.xcassets */; };
+		6330521918644FB800336642 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6330521818644FB800336642 /* GameKit.framework */; };
+		6342D3D218632AE700533BD4 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6342D3D118632AE700533BD4 /* IntroViewController.m */; };
 		634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA0185B142200525177 /* CoreMotion.framework */; };
 		634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA2185B29D700525177 /* AVFoundation.framework */; };
 		63597379184C970D0026E2C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63597378184C970D0026E2C2 /* Foundation.framework */; };
 		6359737B184C970D0026E2C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359737A184C970D0026E2C2 /* CoreGraphics.framework */; };
 		6359737D184C970D0026E2C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359737C184C970D0026E2C2 /* UIKit.framework */; };
-		6359737F184C970D0026E2C2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359737E184C970D0026E2C2 /* SpriteKit.framework */; };
 		63597385184C970D0026E2C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63597383184C970D0026E2C2 /* InfoPlist.strings */; };
 		63597387184C970D0026E2C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63597386184C970D0026E2C2 /* main.m */; };
 		6359738B184C970D0026E2C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6359738A184C970D0026E2C2 /* AppDelegate.m */; };
-		6359738E184C970D0026E2C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6359738C184C970D0026E2C2 /* Main.storyboard */; };
 		63597391184C970D0026E2C2 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63597390184C970D0026E2C2 /* GameViewController.m */; };
-		63597398184C970D0026E2C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63597397184C970D0026E2C2 /* Images.xcassets */; };
 		6359739F184C970D0026E2C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359739E184C970D0026E2C2 /* XCTest.framework */; };
 		635973A0184C970D0026E2C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63597378184C970D0026E2C2 /* Foundation.framework */; };
 		635973A1184C970D0026E2C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359737C184C970D0026E2C2 /* UIKit.framework */; };
 		635973A9184C970D0026E2C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 635973A7184C970D0026E2C2 /* InfoPlist.strings */; };
 		635973AB184C970D0026E2C2 /* PerronPongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635973AA184C970D0026E2C2 /* PerronPongTests.m */; };
-		6378B035185714EF007C738D /* PickImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378B034185714EF007C738D /* PickImageViewController.m */; };
-		63AC6FCE185A0F0800D42318 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AC6FCD185A0F0800D42318 /* Ball.m */; };
+		63BCCEEF1861B1D80041ACBE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BCCEEE1861B1D80041ACBE /* BallView.m */; };
+		63BCCEF01861D5860041ACBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6359738C184C970D0026E2C2 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		634BDA9D185B11EB00525177 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		634BDA9E185B11EB00525177 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		63305214186445AC00336642 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6330521818644FB800336642 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		6342D3D018632AE700533BD4 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		6342D3D118632AE700533BD4 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		634BDAA0185B142200525177 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		634BDAA2185B29D700525177 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		63597375184C970D0026E2C2 /* PerronPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerronPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,16 +59,13 @@
 		6359738D184C970D0026E2C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6359738F184C970D0026E2C2 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		63597390184C970D0026E2C2 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		63597397184C970D0026E2C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6359739D184C970D0026E2C2 /* PerronPongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerronPongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6359739E184C970D0026E2C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		635973A6184C970D0026E2C2 /* PerronPongTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PerronPongTests-Info.plist"; sourceTree = "<group>"; };
 		635973A8184C970D0026E2C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		635973AA184C970D0026E2C2 /* PerronPongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerronPongTests.m; sourceTree = "<group>"; };
-		6378B033185714EF007C738D /* PickImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickImageViewController.h; sourceTree = "<group>"; };
-		6378B034185714EF007C738D /* PickImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickImageViewController.m; sourceTree = "<group>"; };
-		63AC6FCC185A0F0800D42318 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
-		63AC6FCD185A0F0800D42318 /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
+		63BCCEED1861B1D80041ACBE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallView.h; sourceTree = "<group>"; };
+		63BCCEEE1861B1D80041ACBE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +76,8 @@
 				634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */,
 				634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */,
 				6359737B184C970D0026E2C2 /* CoreGraphics.framework in Frameworks */,
+				6330521918644FB800336642 /* GameKit.framework in Frameworks */,
 				6359737D184C970D0026E2C2 /* UIKit.framework in Frameworks */,
-				6359737F184C970D0026E2C2 /* SpriteKit.framework in Frameworks */,
 				63597379184C970D0026E2C2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +117,7 @@
 		63597377184C970D0026E2C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6330521818644FB800336642 /* GameKit.framework */,
 				634BDAA2185B29D700525177 /* AVFoundation.framework */,
 				634BDAA0185B142200525177 /* CoreMotion.framework */,
 				63597378184C970D0026E2C2 /* Foundation.framework */,
@@ -136,15 +135,13 @@
 				63597389184C970D0026E2C2 /* AppDelegate.h */,
 				6359738A184C970D0026E2C2 /* AppDelegate.m */,
 				6359738C184C970D0026E2C2 /* Main.storyboard */,
-				6378B033185714EF007C738D /* PickImageViewController.h */,
-				6378B034185714EF007C738D /* PickImageViewController.m */,
+				6342D3D018632AE700533BD4 /* IntroViewController.h */,
+				6342D3D118632AE700533BD4 /* IntroViewController.m */,
 				6359738F184C970D0026E2C2 /* GameViewController.h */,
 				63597390184C970D0026E2C2 /* GameViewController.m */,
-				634BDA9D185B11EB00525177 /* GameScene.h */,
-				634BDA9E185B11EB00525177 /* GameScene.m */,
-				63AC6FCC185A0F0800D42318 /* Ball.h */,
-				63AC6FCD185A0F0800D42318 /* Ball.m */,
-				63597397184C970D0026E2C2 /* Images.xcassets */,
+				63BCCEED1861B1D80041ACBE /* BallView.h */,
+				63BCCEEE1861B1D80041ACBE /* BallView.m */,
+				63305214186445AC00336642 /* Images.xcassets */,
 				63597381184C970D0026E2C2 /* Supporting Files */,
 			);
 			path = PerronPong;
@@ -226,6 +223,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "David van de Vondervoort";
 				TargetAttributes = {
+					63597374184C970D0026E2C2 = {
+						DevelopmentTeam = QQNZ7Y938D;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
+					};
 					6359739C184C970D0026E2C2 = {
 						TestTargetID = 63597374184C970D0026E2C2;
 					};
@@ -255,9 +260,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63305215186445AC00336642 /* Images.xcassets in Resources */,
+				63BCCEF01861D5860041ACBE /* Main.storyboard in Resources */,
 				63597385184C970D0026E2C2 /* InfoPlist.strings in Resources */,
-				63597398184C970D0026E2C2 /* Images.xcassets in Resources */,
-				6359738E184C970D0026E2C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,12 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634BDA9F185B11EB00525177 /* GameScene.m in Sources */,
 				63597391184C970D0026E2C2 /* GameViewController.m in Sources */,
-				63AC6FCE185A0F0800D42318 /* Ball.m in Sources */,
+				63BCCEEF1861B1D80041ACBE /* BallView.m in Sources */,
 				6359738B184C970D0026E2C2 /* AppDelegate.m in Sources */,
 				63597387184C970D0026E2C2 /* main.m in Sources */,
-				6378B035185714EF007C738D /* PickImageViewController.m in Sources */,
+				6342D3D218632AE700533BD4 /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,10 +412,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PerronPong/PerronPong-Prefix.pch";
 				INFOPLIST_FILE = "PerronPong/PerronPong-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -422,10 +430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PerronPong/PerronPong-Prefix.pch";
 				INFOPLIST_FILE = "PerronPong/PerronPong-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
