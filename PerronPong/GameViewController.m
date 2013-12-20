@@ -89,7 +89,7 @@
 -(void)updateGameScore {
     NSInteger currentScore = [_scoreBoardLabel.text integerValue];
     currentScore--;
-    if(currentScore < 0) {
+    if(currentScore == 0) {
         [self gameIsOver];
     } else {
         [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
