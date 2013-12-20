@@ -38,9 +38,7 @@
     [UIView animateWithDuration:1 animations:^{
         [_introBall moveXTo:208 andYTo:29];
     } completion:^(BOOL finished){
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        GameViewController *gameViewController = [sb instantiateViewControllerWithIdentifier:@"GameViewController"];
-        [self.navigationController pushViewController:gameViewController animated:YES];
+        [self performSegueWithIdentifier:@"startGameSegue" sender:self];
     }];
 }
 

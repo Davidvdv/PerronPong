@@ -7,7 +7,7 @@
         <!--Game View Controller-->
         <scene sceneID="LXZ-ig-wtT">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="9qq-zv-L80" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController id="9qq-zv-L80" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PKv-8h-YHF"/>
                         <viewControllerLayoutGuide type="bottom" id="SuQ-iT-OFc"/>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-EP-kDj">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-EP-kDj">
                                         <rect key="frame" x="20" y="20" width="280" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -35,13 +35,29 @@
                                         <color key="textColor" red="0.88170855978260865" green="0.88170855978260865" blue="0.88170855978260865" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L44-aF-Zjs">
+                                        <rect key="frame" x="20" y="20" width="49" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qDH-Xd-Im2" kind="push" identifier="stopGameSegue" id="r03-Zs-aaU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.19994832179872635" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="ISv-EP-kDj" firstAttribute="leading" secondItem="BlA-yA-pWG" secondAttribute="leading" constant="20" symbolic="YES" id="8Nh-vR-VzH"/>
                                     <constraint firstItem="ISv-EP-kDj" firstAttribute="top" secondItem="BlA-yA-pWG" secondAttribute="top" constant="20" symbolic="YES" id="LHz-n0-XkG"/>
                                     <constraint firstAttribute="trailing" secondItem="ISv-EP-kDj" secondAttribute="trailing" constant="20" symbolic="YES" id="Zya-Ay-ooH"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="t2h-2r-2ky" appends="YES" id="F2e-ve-gCq"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -55,22 +71,19 @@
                             <constraint firstAttribute="bottom" secondItem="dOy-4E-WMs" secondAttribute="bottom" id="fEu-HY-GiM"/>
                             <constraint firstItem="dOy-4E-WMs" firstAttribute="top" secondItem="DUP-oB-uym" secondAttribute="top" id="mQT-Sa-TWb"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="IBa-qn-7na" appends="YES" id="BxT-7W-4ru"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="clS-D1-bfR"/>
                     <connections>
                         <outlet property="gameView" destination="BlA-yA-pWG" id="3Kr-QX-3gp"/>
+                        <outlet property="longPressForShootingBall" destination="t2h-2r-2ky" id="myd-By-740"/>
                         <outlet property="previewCameraView" destination="dOy-4E-WMs" id="Mt2-2h-xMt"/>
                         <outlet property="scoreBoardLabel" destination="ISv-EP-kDj" id="IWi-aG-gUv"/>
-                        <outlet property="shootBallSwipe" destination="IBa-qn-7na" id="QHe-1I-vvq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1x-w2-NmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="up" id="IBa-qn-7na"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="t2h-2r-2ky"/>
             </objects>
-            <point key="canvasLocation" x="2456" y="-9"/>
+            <point key="canvasLocation" x="2531" y="-9"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="IxQ-8w-u8n">
@@ -100,16 +113,17 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="S31-ZP-AZm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Start game (or swipe ball to start)">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Start game (of swipe ball omhoog)">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9qq-zv-L80" kind="push" id="g6N-CP-nNZ"/>
+                                    <segue destination="9qq-zv-L80" kind="push" identifier="startGameSegue" id="g6N-CP-nNZ"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.52941179275512695" green="0.7725490927696228" blue="0.9490196704864502" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="deviceRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lLl-dO-sbz" firstAttribute="trailing" secondItem="ehU-UY-yX9" secondAttribute="trailing" id="2hM-aa-6ez"/>
@@ -128,7 +142,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFV-tE-89S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="gHo-zz-p8B"/>
             </objects>
-            <point key="canvasLocation" x="1997" y="-9"/>
+            <point key="canvasLocation" x="2031" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uPy-aw-n9s">
@@ -154,4 +168,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="r03-Zs-aaU"/>
+    </inferredMetricsTieBreakers>
 </document>

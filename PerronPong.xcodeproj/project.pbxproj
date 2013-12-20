@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63305215186445AC00336642 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63305214186445AC00336642 /* Images.xcassets */; };
+		6330521918644FB800336642 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6330521818644FB800336642 /* GameKit.framework */; };
 		6342D3D218632AE700533BD4 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6342D3D118632AE700533BD4 /* IntroViewController.m */; };
 		634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA0185B142200525177 /* CoreMotion.framework */; };
 		634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634BDAA2185B29D700525177 /* AVFoundation.framework */; };
@@ -17,7 +19,6 @@
 		63597387184C970D0026E2C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63597386184C970D0026E2C2 /* main.m */; };
 		6359738B184C970D0026E2C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6359738A184C970D0026E2C2 /* AppDelegate.m */; };
 		63597391184C970D0026E2C2 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63597390184C970D0026E2C2 /* GameViewController.m */; };
-		63597398184C970D0026E2C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63597397184C970D0026E2C2 /* Images.xcassets */; };
 		6359739F184C970D0026E2C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359739E184C970D0026E2C2 /* XCTest.framework */; };
 		635973A0184C970D0026E2C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63597378184C970D0026E2C2 /* Foundation.framework */; };
 		635973A1184C970D0026E2C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359737C184C970D0026E2C2 /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63305214186445AC00336642 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6330521818644FB800336642 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		6342D3D018632AE700533BD4 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
 		6342D3D118632AE700533BD4 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		634BDAA0185B142200525177 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -56,7 +59,6 @@
 		6359738D184C970D0026E2C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6359738F184C970D0026E2C2 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		63597390184C970D0026E2C2 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		63597397184C970D0026E2C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6359739D184C970D0026E2C2 /* PerronPongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerronPongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6359739E184C970D0026E2C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		635973A6184C970D0026E2C2 /* PerronPongTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PerronPongTests-Info.plist"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				634BDAA3185B29D700525177 /* AVFoundation.framework in Frameworks */,
 				634BDAA1185B142200525177 /* CoreMotion.framework in Frameworks */,
 				6359737B184C970D0026E2C2 /* CoreGraphics.framework in Frameworks */,
+				6330521918644FB800336642 /* GameKit.framework in Frameworks */,
 				6359737D184C970D0026E2C2 /* UIKit.framework in Frameworks */,
 				63597379184C970D0026E2C2 /* Foundation.framework in Frameworks */,
 			);
@@ -114,6 +117,7 @@
 		63597377184C970D0026E2C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6330521818644FB800336642 /* GameKit.framework */,
 				634BDAA2185B29D700525177 /* AVFoundation.framework */,
 				634BDAA0185B142200525177 /* CoreMotion.framework */,
 				63597378184C970D0026E2C2 /* Foundation.framework */,
@@ -137,7 +141,7 @@
 				63597390184C970D0026E2C2 /* GameViewController.m */,
 				63BCCEED1861B1D80041ACBE /* BallView.h */,
 				63BCCEEE1861B1D80041ACBE /* BallView.m */,
-				63597397184C970D0026E2C2 /* Images.xcassets */,
+				63305214186445AC00336642 /* Images.xcassets */,
 				63597381184C970D0026E2C2 /* Supporting Files */,
 			);
 			path = PerronPong;
@@ -219,6 +223,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "David van de Vondervoort";
 				TargetAttributes = {
+					63597374184C970D0026E2C2 = {
+						DevelopmentTeam = QQNZ7Y938D;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
+					};
 					6359739C184C970D0026E2C2 = {
 						TestTargetID = 63597374184C970D0026E2C2;
 					};
@@ -248,9 +260,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63305215186445AC00336642 /* Images.xcassets in Resources */,
 				63BCCEF01861D5860041ACBE /* Main.storyboard in Resources */,
 				63597385184C970D0026E2C2 /* InfoPlist.strings in Resources */,
-				63597398184C970D0026E2C2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,10 +412,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PerronPong/PerronPong-Prefix.pch";
 				INFOPLIST_FILE = "PerronPong/PerronPong-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -414,10 +430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PerronPong/PerronPong-Prefix.pch";
 				INFOPLIST_FILE = "PerronPong/PerronPong-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -43,6 +43,7 @@
     CGContextFillPath(context);
 }
 
+// Move by a specific speed
 -(void) moveXBy:(CGFloat)speedX andYBy:(CGFloat)speedY {
     CGRect rect = self.frame;
     rect.origin.x += speedX;
@@ -50,6 +51,7 @@
     self.frame = rect;
 }
 
+// Move to a coordinate
 -(void) moveXTo:(CGFloat)xCordinate andYTo:(CGFloat)yCordinate {
     CGRect rect = self.frame;
     rect.origin.x = xCordinate;
@@ -65,6 +67,7 @@
     [UIView animateWithDuration:1 animations:^{
         CGRect frame = self.frame;
         CGFloat size;
+        
         if (frame.size.width == 10) {
             size = 300;
             _isInFront = YES;
@@ -75,11 +78,15 @@
         frame.size.width = size;
         frame.size.height = size;
         self.frame = frame;
-    }completion:^(BOOL complete){
-        [self ponging];
         
-        if(!CGRectIntersectsRect(self.frame, self.superview.frame)) {
+    }completion:^(BOOL complete) {
+        
+        if(!CGRectIntersectsRect(self.frame, self.superview.frame) && self.isInFront) {
+            // Ball passed by the player because the ball is out of bounds
             [self.delegate ballIsOutOfBounds];
+        } else {
+            // Otherwise continue ponging
+            [self ponging];
         }
     }];
 }

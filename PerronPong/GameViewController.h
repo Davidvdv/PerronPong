@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 #import "BallView.h"
+#import "IntroViewController.h"
 
 @interface GameViewController : UIViewController <BallViewDelegate>
 
@@ -19,8 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIView *previewCameraView;
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreBoardLabel;
-@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *shootBallSwipe;
+@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressForShootingBall;
 
--(void) createBall;
+-(void) createBallOnLocation:(CGPoint)location;
+-(void) updateGameScore;
+-(void) gameIsOver;
 
 @end
