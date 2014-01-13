@@ -68,10 +68,11 @@
         CGRect frame = self.frame;
         CGFloat size;
         
+        // Ball is away
         if (frame.size.width == 10) {
             size = 300;
             _isInFront = YES;
-        } else {
+        } else { // Ball is in front
             size = 10;
             _isInFront = NO;
         }
@@ -85,6 +86,7 @@
             // Ball passed by the player because the ball is out of bounds
             [self.delegate ballIsOutOfBounds];
         } else {
+            if(self.isInFront) [self.delegate ballIsSmashed];
             // Otherwise continue ponging
             [self ponging];
         }

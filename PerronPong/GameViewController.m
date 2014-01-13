@@ -14,6 +14,8 @@
 
 @implementation GameViewController
 
+#pragma mark - ViewController methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,14 +29,32 @@
     
     // Init the game motion manager
     _gameMotionManager = [[CMMotionManager alloc] init];
+    [_gameMotionManager setAccelerometerUpdateInterval:1.0f/60.0f];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     
     // When leaving this view controller stop the motion updates
-    [_gameMotionManager stopDeviceMotionUpdates];
+    [_gameMotionManager stopAccelerometerUpdates];
 }
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    } else {
+        return UIInterfaceOrientationMaskAll;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - BallViewDelegate methods
 
 -(void)ballIsOutOfBounds {
     NSLog(@"ballIsOutOfBounds");
@@ -49,8 +69,17 @@
     [self.gameView addGestureRecognizer:_longPressForShootingBall];
     
     // Update the HUD
-    [self updateGameScore];
+    [self updateBallCounter];
 }
+
+-(void)ballIsSmashed {
+    // Get current score and increase by 1
+    NSNumber *currentScore = [NSNumber numberWithInt:[_ballPongedCounterLabel.text intValue]];
+    currentScore = [NSNumber numberWithInt:[currentScore intValue]+1];
+    [_ballPongedCounterLabel setText:[currentScore stringValue]];
+}
+
+#pragma mark - Game methods
 
 -(void)longPressForShootingBallHandler {
     
@@ -79,31 +108,45 @@
     [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
         if(error) { NSLog(@"%@", error); }
         dispatch_async(dispatch_get_main_queue(), ^{
-            double pitch = deviceMotion.rotationRate.x*15;
-            double roll = deviceMotion.attitude.roll *20;
+            double pitch = deviceMotion.rotationRate.x*10;
+            double roll = deviceMotion.attitude.roll*10;
+//            NSTimeInterval secondsSinceLastDraw = -([self.lastUpdateTime timeIntervalSinceNow]);
+//            self.pacmanYVelocity = self.pacmanYVelocity - (self.acceleration.x * secondsSinceLastDraw);
+//            self.pacmanXVelocity = self.pacmanXVelocity - (self.acceleration.y * secondsSinceLastDraw);
+//            
+//            CGFloat xDelta = secondsSinceLastDraw * self.pacmanXVelocity * 500;
+//            CGFloat yDelta = secondsSinceLastDraw * self.pacmanYVelocity * 500;
+//            
+//            self.currentPoint = CGPointMake(self.currentPoint.x + xDelta,
+//                                            self.currentPoint.y + yDelta);
+//            double accx = deviceMotion.userAcceleration.x*10;
+//            NSLog(@"%f",accx);
             [_ball moveXBy:roll andYBy:pitch];
         });
     }];
 }
 
--(void)updateGameScore {
-    NSInteger currentScore = [_scoreBoardLabel.text integerValue];
-    currentScore--;
-    if(currentScore == 0) {
+-(void)updateBallCounter {
+    
+    // Dit moet getest worden
+    NSNumber *currentScore = [NSNumber numberWithInt:[_ballsLeftCounterLabel.text intValue]];
+    currentScore = [NSNumber numberWithInt:[currentScore intValue]-1];
+    if(currentScore == [NSNumber numberWithInt:0]) {
         [self gameIsOver];
     } else {
-        [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
+        [_ballsLeftCounterLabel setText:[currentScore stringValue]];
     }
 }
 
 -(void) gameIsOver {
+    [[GCManager sharedInstance] insertScoreIntoLeaderboard:[_ballPongedCounterLabel.text intValue]];
+    
     UIAlertView *gameOverAlertView = [[UIAlertView alloc] initWithTitle:@"Game over" message:@"Je hebt geen ballen meer over!" delegate:self cancelButtonTitle:@"Hè, jammer!" otherButtonTitles:nil];
     [gameOverAlertView setDelegate:self];
     [gameOverAlertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"alertViewCancel");
     if (alertView.cancelButtonIndex == buttonIndex) {
         [self performSegueWithIdentifier:@"stopGameSegue" sender:self];
     }
@@ -111,7 +154,7 @@
 
 -(void)startCameraPreview {
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
-    session.sessionPreset = AVCaptureSessionPresetMedium;
+    session.sessionPreset = AVCaptureSessionPresetLow;
     
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     captureVideoPreviewLayer.frame = self.view.bounds;
@@ -128,21 +171,6 @@
     
     [session addInput:input];
     [session startRunning];
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 @end

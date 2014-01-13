@@ -12,6 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //[[GCManager sharedInstance] authenticateLocalPlayer];
+    
     // Override point for customization after application launch.
     return YES;
 }

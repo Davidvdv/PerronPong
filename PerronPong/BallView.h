@@ -11,6 +11,7 @@
 @protocol BallViewDelegate <NSObject>
 
 -(void)ballIsOutOfBounds;
+-(void)ballIsSmashed;
 
 @end
 
