@@ -16,5 +16,6 @@
 - (void) authenticateLocalPlayer;
 - (BOOL) islocalPlayerIsAuthenticated;
 - (void) insertScoreIntoLeaderboard:(int64_t)score;
+- (void) checkForAchievements:(int64_t)score;
 
 @end

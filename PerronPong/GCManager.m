@@ -49,11 +49,38 @@ static GCManager *sharedHelper = nil;
     [GKScore reportScores:@[scoreLeaderBoard] withCompletionHandler:^(NSError *error) {
         if (error) {
             NSLog(@"Inserting score to Game Center leaderboard failed.");
-        } else {
-            NSLog(@"complete");
         }
     }];
 }
 
+- (void) checkForAchievements:(int64_t)score {
+    NSString *achievementIdentifier;
+    switch (score) {
+        case 10:
+            achievementIdentifier = @"PerronPongBeginner";
+            break;
+        
+        case 25:
+            achievementIdentifier = @"PerronPongPro";
+            break;
+            
+        case 50:
+            achievementIdentifier = @"PerronPongMaster";
+            break;
+            
+        default:
+            break;
+    }
+    
+    if (achievementIdentifier != nil) {
+        GKAchievement *achievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
+        [achievement setPercentComplete:100.0];
+        [GKAchievement reportAchievements:@[achievement] withCompletionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"Unlocking achievement failed.");
+            }
+        }];
+    }
+}
 
 @end

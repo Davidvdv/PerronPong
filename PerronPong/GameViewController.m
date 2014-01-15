@@ -139,7 +139,9 @@
 }
 
 -(void) gameIsOver {
-    [[GCManager sharedInstance] insertScoreIntoLeaderboard:[_ballPongedCounterLabel.text intValue]];
+    ino64_t finalScore = [_ballPongedCounterLabel.text intValue];
+    [[GCManager sharedInstance] insertScoreIntoLeaderboard:finalScore];
+    [[GCManager sharedInstance] checkForAchievements:finalScore];
     
     UIAlertView *gameOverAlertView = [[UIAlertView alloc] initWithTitle:@"Game over" message:@"Je hebt geen ballen meer over!" delegate:self cancelButtonTitle:@"Hè, jammer!" otherButtonTitles:nil];
     [gameOverAlertView setDelegate:self];
