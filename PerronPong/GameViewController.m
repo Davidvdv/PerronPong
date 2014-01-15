@@ -19,9 +19,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Start the camera preview
     [self startCameraPreview];
+    
+    // Prepare ball indicator by init
+    _ballIndicator = [[BallIndicatorView alloc] initWithFrame:CGRectMake(10, 10, 100, 150)];
+    _ballIndicator.hidden = YES;
+    [self.gameView addSubview:_ballIndicator];
     
     // Init and add a longpress gesture recognizer to start the game
     _longPressForShootingBall = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForShootingBallHandler)];
@@ -29,7 +34,7 @@
     
     // Init the game motion manager
     _gameMotionManager = [[CMMotionManager alloc] init];
-    [_gameMotionManager setAccelerometerUpdateInterval:1.0f/60.0f];
+    [_gameMotionManager setAccelerometerUpdateInterval:1.0f/30.0f];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -56,11 +61,13 @@
 
 #pragma mark - BallViewDelegate methods
 
--(void)ballIsOutOfBounds {
-    NSLog(@"ballIsOutOfBounds");
+-(void)ballIsMissed {
     
     // Stop de motion manager
-    [_gameMotionManager stopDeviceMotionUpdates];
+    [_gameMotionManager stopAccelerometerUpdates];
+    
+    // Hide indicator
+    _ballIndicator.hidden = YES;
     
     // Remove the ball from screen
     [_ball removeFromSuperview];
@@ -70,6 +77,18 @@
     
     // Update the HUD
     [self updateBallCounter];
+}
+
+-(void)ballIsInBounds {
+    NSLog(@"inside in bounds");
+    // Ball is in the screen, so hide the indicator
+    _ballIndicator.hidden = YES;
+}
+
+-(void)ballIsOutOfBoundsWithPostion:(CGPoint)position {
+    _ballIndicator.hidden = NO;
+    NSLog(@"inside out of bounds");
+    //[_ballIndicator indicatePosition:_ball.position.y];
 }
 
 -(void)ballIsSmashed {
@@ -105,30 +124,21 @@
     [_ball ponging];
     
     // Control the current ball by the motion manager
-    [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
+    [self.gameMotionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMAccelerometerData *accelerationData, NSError *error) {
         if(error) { NSLog(@"%@", error); }
         dispatch_async(dispatch_get_main_queue(), ^{
-            double pitch = deviceMotion.rotationRate.x*10;
-            double roll = deviceMotion.attitude.roll*10;
-//            NSTimeInterval secondsSinceLastDraw = -([self.lastUpdateTime timeIntervalSinceNow]);
-//            self.pacmanYVelocity = self.pacmanYVelocity - (self.acceleration.x * secondsSinceLastDraw);
-//            self.pacmanXVelocity = self.pacmanXVelocity - (self.acceleration.y * secondsSinceLastDraw);
-//            
-//            CGFloat xDelta = secondsSinceLastDraw * self.pacmanXVelocity * 500;
-//            CGFloat yDelta = secondsSinceLastDraw * self.pacmanYVelocity * 500;
-//            
-//            self.currentPoint = CGPointMake(self.currentPoint.x + xDelta,
-//                                            self.currentPoint.y + yDelta);
-//            double accx = deviceMotion.userAcceleration.x*10;
-//            NSLog(@"%f",accx);
-            [_ball moveXBy:roll andYBy:pitch];
+//            double pitch = deviceMotion.rotationRate.x*10;
+//            double roll = deviceMotion.attitude.roll*10;
+//            [_ball moveXBy:roll andYBy:pitch];
+            CGFloat velocity = accelerationData.acceleration.x*100;
+            [_ball moveXBy:velocity andYBy:0];
         });
     }];
 }
 
+
 -(void)updateBallCounter {
-    
-    // Dit moet getest worden
+
     NSNumber *currentScore = [NSNumber numberWithInt:[_ballsLeftCounterLabel.text intValue]];
     currentScore = [NSNumber numberWithInt:[currentScore intValue]-1];
     if(currentScore == [NSNumber numberWithInt:0]) {
@@ -154,7 +164,7 @@
 
 -(void)startCameraPreview {
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
-    session.sessionPreset = AVCaptureSessionPresetLow;
+    session.sessionPreset = AVCaptureSessionPresetMedium;
     
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     captureVideoPreviewLayer.frame = self.view.bounds;

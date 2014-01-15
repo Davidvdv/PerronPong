@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @protocol BallViewDelegate <NSObject>
-
--(void)ballIsOutOfBounds;
+-(void)ballIsMissed;
+-(void)ballIsOutOfBoundsWithPostion:(CGPoint)position;
+-(void)ballIsInBounds;
 -(void)ballIsSmashed;
-
 @end
 
 @interface BallView : UIView

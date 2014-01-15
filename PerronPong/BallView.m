@@ -67,7 +67,7 @@
     [UIView animateWithDuration:1 animations:^{
         CGRect frame = self.frame;
         CGFloat size;
-        
+
         // Ball is away
         if (frame.size.width == 10) {
             size = 300;
@@ -81,10 +81,9 @@
         self.frame = frame;
         
     }completion:^(BOOL complete) {
-        
         if(!CGRectIntersectsRect(self.frame, self.superview.frame) && self.isInFront) {
             // Ball passed by the player because the ball is out of bounds
-            [self.delegate ballIsOutOfBounds];
+            [self.delegate ballIsMissed];
         } else {
             if(self.isInFront) [self.delegate ballIsSmashed];
             // Otherwise continue ponging

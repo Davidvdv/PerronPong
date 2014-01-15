@@ -23,6 +23,7 @@
 		635973A1184C970D0026E2C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6359737C184C970D0026E2C2 /* UIKit.framework */; };
 		635973A9184C970D0026E2C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 635973A7184C970D0026E2C2 /* InfoPlist.strings */; };
 		635973AB184C970D0026E2C2 /* PerronPongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635973AA184C970D0026E2C2 /* PerronPongTests.m */; };
+		635C5F6D1886994700C84631 /* BallIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C5F6C1886994700C84631 /* BallIndicatorView.m */; };
 		63BCCEEF1861B1D80041ACBE /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BCCEEE1861B1D80041ACBE /* BallView.m */; };
 		63BCCEF01861D5860041ACBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6359738C184C970D0026E2C2 /* Main.storyboard */; };
 		63F65F7F187ADE1B0035F14B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F65F7E187ADE1B0035F14B /* GameKit.framework */; };
@@ -64,6 +65,8 @@
 		635973A6184C970D0026E2C2 /* PerronPongTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PerronPongTests-Info.plist"; sourceTree = "<group>"; };
 		635973A8184C970D0026E2C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		635973AA184C970D0026E2C2 /* PerronPongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerronPongTests.m; sourceTree = "<group>"; };
+		635C5F6B1886994700C84631 /* BallIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallIndicatorView.h; sourceTree = "<group>"; };
+		635C5F6C1886994700C84631 /* BallIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallIndicatorView.m; sourceTree = "<group>"; };
 		63BCCEED1861B1D80041ACBE /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallView.h; sourceTree = "<group>"; };
 		63BCCEEE1861B1D80041ACBE /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallView.m; sourceTree = "<group>"; };
 		63F65F7E187ADE1B0035F14B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -144,6 +147,8 @@
 				63597390184C970D0026E2C2 /* GameViewController.m */,
 				63BCCEED1861B1D80041ACBE /* BallView.h */,
 				63BCCEEE1861B1D80041ACBE /* BallView.m */,
+				635C5F6B1886994700C84631 /* BallIndicatorView.h */,
+				635C5F6C1886994700C84631 /* BallIndicatorView.m */,
 				63FC429F1883EB2B00956858 /* GCManager.h */,
 				63FC42A01883EB2C00956858 /* GCManager.m */,
 				63305214186445AC00336642 /* Images.xcassets */,
@@ -287,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63597391184C970D0026E2C2 /* GameViewController.m in Sources */,
+				635C5F6D1886994700C84631 /* BallIndicatorView.m in Sources */,
 				63FC42A11883EB2C00956858 /* GCManager.m in Sources */,
 				63BCCEEF1861B1D80041ACBE /* BallView.m in Sources */,
 				6359738B184C970D0026E2C2 /* AppDelegate.m in Sources */,
