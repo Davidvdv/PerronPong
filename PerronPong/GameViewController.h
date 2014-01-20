@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ballPongedCounterLabel;
 @property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressForShootingBall;
-//@property (strong, nonatomic) NSDate *lastUpdateTime;
 
 -(void) createBallOnLocation:(CGPoint)location;
 -(void) updateBallCounter;

@@ -11,6 +11,7 @@
 @implementation GCManager
 
 static GCManager *sharedHelper = nil;
+
 + (GCManager *) sharedInstance {
     if (!sharedHelper) {
         sharedHelper = [[GCManager alloc] init];
@@ -55,29 +56,24 @@ static GCManager *sharedHelper = nil;
 
 - (void) checkForAchievements:(int64_t)score {
     NSString *achievementIdentifier;
-    switch (score) {
-        case 10:
-            achievementIdentifier = @"PerronPongBeginner";
-            break;
-        
-        case 25:
-            achievementIdentifier = @"PerronPongPro";
-            break;
-            
-        case 50:
-            achievementIdentifier = @"PerronPongMaster";
-            break;
-            
-        default:
-            break;
+    if (score >= 50) {
+        achievementIdentifier = @"PerronPongMaster";
+    } else if (score >= 25) {
+        achievementIdentifier = @"PerronPongPro";
+    } else if (score >= 10) {
+        achievementIdentifier = @"PerronPongBeginner";
     }
     
     if (achievementIdentifier != nil) {
         GKAchievement *achievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
+        [achievement setShowsCompletionBanner:YES];
         [achievement setPercentComplete:100.0];
+        
         [GKAchievement reportAchievements:@[achievement] withCompletionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"Unlocking achievement failed.");
+            } else {
+                NSLog(@"%@ %qi", achievementIdentifier, score);
             }
         }];
     }

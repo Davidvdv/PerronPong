@@ -64,10 +64,10 @@
 }
 
 -(void)ponging {
+    
     [UIView animateWithDuration:1 animations:^{
         CGRect frame = self.frame;
         CGFloat size;
-        
         // Ball is away
         if (frame.size.width == 10) {
             size = 300;
@@ -76,10 +76,15 @@
             size = 10;
             _isInFront = NO;
         }
+                
+//        if(CGRectIntersectsRect([self.layer.presentationLayer frame], self.superview.frame)) {
+//            NSLog(@"animating");
+//        }
+        
         frame.size.width = size;
         frame.size.height = size;
         self.frame = frame;
-        
+
     }completion:^(BOOL complete) {
         
         if(!CGRectIntersectsRect(self.frame, self.superview.frame) && self.isInFront) {

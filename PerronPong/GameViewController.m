@@ -29,7 +29,7 @@
     
     // Init the game motion manager
     _gameMotionManager = [[CMMotionManager alloc] init];
-    [_gameMotionManager setAccelerometerUpdateInterval:1.0f/60.0f];
+    [_gameMotionManager setAccelerometerUpdateInterval:1.0f/30.0f];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -57,10 +57,9 @@
 #pragma mark - BallViewDelegate methods
 
 -(void)ballIsOutOfBounds {
-    NSLog(@"ballIsOutOfBounds");
     
     // Stop de motion manager
-    [_gameMotionManager stopDeviceMotionUpdates];
+    [_gameMotionManager stopAccelerometerUpdates];
     
     // Remove the ball from screen
     [_ball removeFromSuperview];
@@ -105,30 +104,17 @@
     [_ball ponging];
     
     // Control the current ball by the motion manager
-    [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
+    [self.gameMotionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMAccelerometerData *accelerationData, NSError *error) {
         if(error) { NSLog(@"%@", error); }
         dispatch_async(dispatch_get_main_queue(), ^{
-            double pitch = deviceMotion.rotationRate.x*10;
-            double roll = deviceMotion.attitude.roll*10;
-//            NSTimeInterval secondsSinceLastDraw = -([self.lastUpdateTime timeIntervalSinceNow]);
-//            self.pacmanYVelocity = self.pacmanYVelocity - (self.acceleration.x * secondsSinceLastDraw);
-//            self.pacmanXVelocity = self.pacmanXVelocity - (self.acceleration.y * secondsSinceLastDraw);
-//            
-//            CGFloat xDelta = secondsSinceLastDraw * self.pacmanXVelocity * 500;
-//            CGFloat yDelta = secondsSinceLastDraw * self.pacmanYVelocity * 500;
-//            
-//            self.currentPoint = CGPointMake(self.currentPoint.x + xDelta,
-//                                            self.currentPoint.y + yDelta);
-//            double accx = deviceMotion.userAcceleration.x*10;
-//            NSLog(@"%f",accx);
-            [_ball moveXBy:roll andYBy:pitch];
+            double roll = accelerationData.acceleration.x*50;
+            [_ball moveXBy:roll andYBy:0];
+            NSLog(@"%f", roll);
         });
     }];
 }
 
 -(void)updateBallCounter {
-    
-    // Dit moet getest worden
     NSNumber *currentScore = [NSNumber numberWithInt:[_ballsLeftCounterLabel.text intValue]];
     currentScore = [NSNumber numberWithInt:[currentScore intValue]-1];
     if(currentScore == [NSNumber numberWithInt:0]) {
@@ -156,7 +142,7 @@
 
 -(void)startCameraPreview {
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
-    session.sessionPreset = AVCaptureSessionPresetLow;
+    session.sessionPreset = AVCaptureSessionPresetMedium;
     
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     captureVideoPreviewLayer.frame = self.view.bounds;
