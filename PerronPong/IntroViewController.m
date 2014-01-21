@@ -25,7 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // check if game center is available
     if([GCManager isGameCenterAvailable]) {
+        // authenticate local player
         [[GCManager sharedInstance] authenticateLocalPlayer];
         
     }

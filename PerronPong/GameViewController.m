@@ -104,12 +104,11 @@
     [_ball ponging];
     
     // Control the current ball by the motion manager
-    [self.gameMotionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMAccelerometerData *accelerationData, NSError *error) {
-        if(error) { NSLog(@"%@", error); }
+    [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            double roll = accelerationData.acceleration.x*50;
-            [_ball moveXBy:roll andYBy:0];
-            NSLog(@"%f", roll);
+            double pitch = deviceMotion.rotationRate.x*15;
+            double roll = deviceMotion.attitude.roll *10;
+            [_ball moveXBy:roll andYBy:pitch];
         });
     }];
 }
@@ -125,7 +124,7 @@
 }
 
 -(void) gameIsOver {
-    ino64_t finalScore = [_ballPongedCounterLabel.text intValue];
+    int64_t finalScore = [_ballPongedCounterLabel.text intValue];
     [[GCManager sharedInstance] insertScoreIntoLeaderboard:finalScore];
     [[GCManager sharedInstance] checkForAchievements:finalScore];
     

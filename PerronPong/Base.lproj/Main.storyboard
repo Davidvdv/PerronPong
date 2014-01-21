@@ -14,16 +14,16 @@
                         <viewControllerLayoutGuide type="bottom" id="SuQ-iT-OFc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DUP-oB-uym">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOy-4E-WMs" userLabel="previewCameraView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlA-yA-pWG" userLabel="gameView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-EP-kDj">
@@ -60,7 +60,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Houd je vinger op het scherm om het balletje af te schieten" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-9T-Yti">
-                                        <rect key="frame" x="20" y="494" width="280" height="54"/>
+                                        <rect key="frame" x="20" y="406" width="280" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -133,7 +133,7 @@
                         <viewControllerLayoutGuide type="bottom" id="a7z-eb-2K8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nXK-cY-Z8p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERRONPONG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ehU-UY-yX9">
@@ -147,22 +147,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-dO-sbz">
-                                <rect key="frame" x="20" y="493" width="280" height="55"/>
+                                <rect key="frame" x="20" y="405" width="280" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="S31-ZP-AZm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Start game (of swipe de bal omhoog)">
+                                <state key="normal" title="Start game">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9qq-zv-L80" kind="push" identifier="startGameSegue" id="g6N-CP-nNZ"/>
+                                    <segue destination="9qq-zv-L80" kind="push" identifier="startGameSegue" id="2LY-Kn-3Mr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6i-hc-Jeg">
-                                <rect key="frame" x="20" y="289" width="280" height="55"/>
+                                <rect key="frame" x="20" y="73" width="280" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Leaderboard &amp; Achievements">
@@ -184,14 +184,10 @@
                             <constraint firstAttribute="bottom" secondItem="lLl-dO-sbz" secondAttribute="bottom" constant="20" symbolic="YES" id="Zcw-hr-7aN"/>
                             <constraint firstItem="ehU-UY-yX9" firstAttribute="top" secondItem="nXK-cY-Z8p" secondAttribute="top" constant="20" symbolic="YES" id="iaV-HH-Kud"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="gHo-zz-p8B" appends="YES" id="Qss-dC-nKd"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="WvI-q3-9tr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFV-tE-89S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="gHo-zz-p8B"/>
             </objects>
             <point key="canvasLocation" x="2031" y="-9"/>
         </scene>
@@ -217,7 +213,7 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="r03-Zs-aaU"/>
