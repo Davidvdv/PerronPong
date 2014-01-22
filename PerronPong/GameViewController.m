@@ -29,14 +29,14 @@
     
     // Init the game motion manager
     _gameMotionManager = [[CMMotionManager alloc] init];
-    [_gameMotionManager setAccelerometerUpdateInterval:1.0f/30.0f];
+    [_gameMotionManager setDeviceMotionUpdateInterval:1.0f/60.0f];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     // When leaving this view controller stop the motion updates
-    [_gameMotionManager stopAccelerometerUpdates];
+    [_gameMotionManager stopDeviceMotionUpdates];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -95,7 +95,6 @@
 }
 
 -(void)createBallOnLocation:(CGPoint)location {
-    //150, 200 default
     _ball = [[BallView alloc] initWithFrame:CGRectMake(location.x, location.y, 300, 300) andColor:[UIColor redColor]];
     _ball.delegate = self;
     [self.gameView addSubview:_ball];
@@ -106,9 +105,9 @@
     // Control the current ball by the motion manager
     [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            double pitch = deviceMotion.rotationRate.x*15;
-            double roll = deviceMotion.attitude.roll *10;
-            [_ball moveXBy:roll andYBy:pitch];
+            double yaw = deviceMotion.rotationRate.x*15;
+            double roll = deviceMotion.rotationRate.y *10;
+            [_ball moveXBy:roll andYBy:yaw];
         });
     }];
 }

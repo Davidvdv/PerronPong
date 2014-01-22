@@ -22,9 +22,12 @@
 @property (readonly, nonatomic) BOOL isInFront;
 @property (weak, nonatomic) id <BallViewDelegate> delegate;
 
+-(CGFloat) width;
+-(CGFloat) height;
 -(CGPoint) position;
 -(void) moveXBy:(CGFloat)speedY andYBy:(CGFloat)speedX;
 -(void) moveXTo:(CGFloat)xCordinate andYTo:(CGFloat)yCordinate;
+-(void) scaleWidthTo:(CGFloat)widthSize andHeight:(CGFloat)heightSize;
 -(void) ponging;
 
 -(id)initWithFrame:(CGRect)frame andColor:(UIColor *)ballColor;
