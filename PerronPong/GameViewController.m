@@ -59,7 +59,7 @@
 -(void)ballIsOutOfBounds {
     
     // Stop de motion manager
-    [_gameMotionManager stopAccelerometerUpdates];
+    [_gameMotionManager stopDeviceMotionUpdates];
     
     // Remove the ball from screen
     [_ball removeFromSuperview];
@@ -69,6 +69,10 @@
     
     // Update the HUD
     [self updateBallCounter];
+    
+    // Inform the player
+    UIAlertView *ballIsOutOfBoundsAlert = [[UIAlertView alloc] initWithTitle:@"Bal gemist!" message:@"Je hebt de bal gemist en daarom een bal verloren" delegate:nil cancelButtonTitle:@"Ik ga een nieuwe bal serveren" otherButtonTitles:nil, nil];
+    [ballIsOutOfBoundsAlert show];
 }
 
 -(void)ballIsSmashed {
@@ -95,8 +99,13 @@
 }
 
 -(void)createBallOnLocation:(CGPoint)location {
+    // Init a new ball
     _ball = [[BallView alloc] initWithFrame:CGRectMake(location.x, location.y, 300, 300) andColor:[UIColor redColor]];
+    
+    // The delegate of the ball is GameViewController.
     _ball.delegate = self;
+    
+    // Add the ball to the gameView
     [self.gameView addSubview:_ball];
     
     // Let the ball ponging
@@ -115,18 +124,25 @@
 -(void)updateBallCounter {
     NSNumber *currentScore = [NSNumber numberWithInt:[_ballsLeftCounterLabel.text intValue]];
     currentScore = [NSNumber numberWithInt:[currentScore intValue]-1];
+    
     if(currentScore == [NSNumber numberWithInt:0]) {
+        // No balls left so game is over
         [self gameIsOver];
     } else {
+        // Still balls left update the score
         [_ballsLeftCounterLabel setText:[currentScore stringValue]];
     }
 }
 
 -(void) gameIsOver {
+    // Get the score of score board
     int64_t finalScore = [_ballPongedCounterLabel.text intValue];
+    
+    // Send score to Game Center leaderboard and check if there are achievements unlocked
     [[GCManager sharedInstance] insertScoreIntoLeaderboard:finalScore];
     [[GCManager sharedInstance] checkForAchievements:finalScore];
     
+    // Inform the player
     UIAlertView *gameOverAlertView = [[UIAlertView alloc] initWithTitle:@"Game over" message:@"Je hebt geen ballen meer over!" delegate:self cancelButtonTitle:@"Hè, jammer!" otherButtonTitles:nil];
     [gameOverAlertView setDelegate:self];
     [gameOverAlertView show];

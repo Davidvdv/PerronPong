@@ -59,13 +59,16 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Houd je vinger op het scherm om het balletje af te schieten" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-9T-Yti">
-                                        <rect key="frame" x="20" y="406" width="280" height="54"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-9T-Yti">
+                                        <rect key="frame" x="20" y="340" width="280" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="mJR-4A-15l"/>
+                                            <constraint firstAttribute="height" constant="120" id="mJR-4A-15l"/>
                                         </constraints>
+                                        <string key="text">Houd je vinger op het scherm om het balletje af te schieten. 
+
+Kantel het scherm om het balletje in beeld te houden.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.88170855979999996" green="0.88170855979999996" blue="0.88170855979999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
