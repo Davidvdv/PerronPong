@@ -63,6 +63,7 @@
     
     // Remove the ball from screen
     [_ball removeFromSuperview];
+    _ball = nil;
     
     // Add longpress gesture recognizer so the player can add a new ball
     [self.gameView addGestureRecognizer:_longPressForShootingBall];
