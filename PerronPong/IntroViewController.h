@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BallView.h"
 #import "GameViewController.h"
+#import <GameKit/GameKit.h>
+#import "GCManager.h"
 
-@interface IntroViewController : UIViewController
+@interface IntroViewController : UIViewController <GKGameCenterControllerDelegate>
 
 @property (strong, nonatomic) BallView *introBall;
+- (IBAction)showGameCenterLeaderboard:(UIButton *)sender;
 
 @end

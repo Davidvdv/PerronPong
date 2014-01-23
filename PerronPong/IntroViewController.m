@@ -25,8 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // check if game center is available
+    if([GCManager isGameCenterAvailable]) {
+        // authenticate local player
+        [[GCManager sharedInstance] authenticateLocalPlayer];
+        
+    }
+    
 	// Do any additional setup after loading the view.
-    _introBall = [[BallView alloc] initWithFrame:CGRectMake(208, 350, 30, 30) andColor:[UIColor colorWithRed:200 green:200 blue:200 alpha:1]];
+    _introBall = [[BallView alloc] initWithFrame:CGRectMake(208, 300, 60, 60) andColor:[UIColor colorWithRed:200 green:200 blue:200 alpha:1]];
     [self.view addSubview:_introBall];
     
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];
@@ -36,6 +43,7 @@
 
 -(void)swipeHandler {
     [UIView animateWithDuration:1 animations:^{
+        [_introBall scaleWidthTo:30 andHeight:30];
         [_introBall moveXTo:208 andYTo:29];
     } completion:^(BOOL finished){
         [self performSegueWithIdentifier:@"startGameSegue" sender:self];
@@ -46,6 +54,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)showGameCenterLeaderboard:(UIButton *)sender {
+    GKGameCenterViewController *gameCenterViewController = [[GKGameCenterViewController alloc] init];
+    if (gameCenterViewController != nil) {
+        gameCenterViewController.gameCenterDelegate = self;
+        [self presentViewController:gameCenterViewController animated:YES completion:nil];
+    }
+}
+
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

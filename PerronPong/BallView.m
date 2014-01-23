@@ -59,32 +59,47 @@
     self.frame = rect;
 }
 
+-(void) scaleWidthTo:(CGFloat)widthSize andHeight:(CGFloat)heightSize {
+    CGFloat sx = widthSize / self.frame.size.width;
+    CGFloat sy = heightSize / self.frame.size.height;
+    self.transform = CGAffineTransformMakeScale(sx, sy);
+}
+
 -(CGPoint)position {
     return self.frame.origin;
 }
 
+-(CGFloat)width {
+    return self.frame.size.width;
+}
+
+-(CGFloat)height {
+    return self.frame.size.height;
+}
+
 -(void)ponging {
+    
     [UIView animateWithDuration:1 animations:^{
-        CGRect frame = self.frame;
-        CGFloat size;
-        
-        if (frame.size.width == 10) {
-            size = 300;
-            _isInFront = YES;
-        } else {
-            size = 10;
+        // Ball is away
+        if (self.width == 10) {
+            //size = 300;
+            [self scaleWidthTo:300 andHeight:300];
             _isInFront = NO;
+        } else { // Ball is in front
+            //size = 10;
+            [self scaleWidthTo:10 andHeight:10];
+            _isInFront = YES;
         }
-        frame.size.width = size;
-        frame.size.height = size;
-        self.frame = frame;
-        
+
     }completion:^(BOOL complete) {
         
-        if(!CGRectIntersectsRect(self.frame, self.superview.frame) && self.isInFront) {
+        if(!(CGRectIntersectsRect(self.frame, self.superview.frame)) && self.isInFront) {
             // Ball passed by the player because the ball is out of bounds
             [self.delegate ballIsOutOfBounds];
         } else {
+            if([self isInFront] && complete) {
+                [self.delegate ballIsSmashed];
+            }
             // Otherwise continue ponging
             [self ponging];
         }

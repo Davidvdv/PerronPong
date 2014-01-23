@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
+#import "GCManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

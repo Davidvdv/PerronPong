@@ -14,6 +14,8 @@
 
 @implementation GameViewController
 
+#pragma mark - ViewController methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -22,54 +24,86 @@
     [self startCameraPreview];
     
     // Init and add a longpress gesture recognizer to start the game
-    _longPressForShootingBall = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForShootingBallHandler)];
-    [self.gameView addGestureRecognizer:_longPressForShootingBall];
+    _longPressForShootingBallRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForShootingBallHandler)];
+    [self.gameView addGestureRecognizer:_longPressForShootingBallRecognizer];
     
     // Init the game motion manager
     _gameMotionManager = [[CMMotionManager alloc] init];
+    [_gameMotionManager setDeviceMotionUpdateInterval:1.0f/60.0f];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     
     // When leaving this view controller stop the motion updates
     [_gameMotionManager stopDeviceMotionUpdates];
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    } else {
+        return UIInterfaceOrientationMaskAll;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - BallViewDelegate methods
+
 -(void)ballIsOutOfBounds {
-    NSLog(@"ballIsOutOfBounds");
-    
     // Stop de motion manager
     [_gameMotionManager stopDeviceMotionUpdates];
     
     // Remove the ball from screen
     [_ball removeFromSuperview];
+    _ball = nil;
     
     // Add longpress gesture recognizer so the player can add a new ball
-    [self.gameView addGestureRecognizer:_longPressForShootingBall];
+    [self.gameView addGestureRecognizer:_longPressForShootingBallRecognizer];
     
     // Update the HUD
-    [self updateGameScore];
+    [self updateBallCounter];
 }
+
+-(void)ballIsSmashed {
+    // Get current score and increase by 1
+    NSNumber *currentScore = [NSNumber numberWithInt:[_ballPongedCounterLabel.text intValue]];
+    currentScore = [NSNumber numberWithInt:[currentScore intValue]+1];
+    [_ballPongedCounterLabel setText:[currentScore stringValue]];
+}
+
+#pragma mark - Game methods
 
 -(void)longPressForShootingBallHandler {
     
     // Get the location of the longpress
-    CGPoint location = [_longPressForShootingBall locationInView:self.gameView];
+    CGPoint location = [_longPressForShootingBallRecognizer locationInView:self.gameView];
+    location.x -= 150;
+    location.y -= 150;
     
     // Create a ball on the location
     [self createBallOnLocation:location];
     
     // Remove the longpress gesture recognizer to prevent adding a new ball
-    [self.gameView removeGestureRecognizer:_longPressForShootingBall];
+    [self.gameView removeGestureRecognizer:_longPressForShootingBallRecognizer];
     
     [_instructionLabel setHidden:YES];
 }
 
 -(void)createBallOnLocation:(CGPoint)location {
-    //150, 200 default
+    // Init a new ball
     _ball = [[BallView alloc] initWithFrame:CGRectMake(location.x, location.y, 300, 300) andColor:[UIColor redColor]];
+    
+    // The delegate of the ball is GameViewController.
     _ball.delegate = self;
+    
+    // Add the ball to the gameView
     [self.gameView addSubview:_ball];
     
     // Let the ball ponging
@@ -77,33 +111,42 @@
     
     // Control the current ball by the motion manager
     [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
-        if(error) { NSLog(@"%@", error); }
         dispatch_async(dispatch_get_main_queue(), ^{
-            double pitch = deviceMotion.rotationRate.x*15;
-            double roll = deviceMotion.attitude.roll *20;
-            [_ball moveXBy:roll andYBy:pitch];
+            double yaw = deviceMotion.rotationRate.x*15;
+            double roll = deviceMotion.attitude.roll*20;
+            [_ball moveXBy:roll andYBy:yaw];
         });
     }];
 }
 
--(void)updateGameScore {
-    NSInteger currentScore = [_scoreBoardLabel.text integerValue];
-    currentScore--;
-    if(currentScore == 0) {
+-(void)updateBallCounter {
+    NSNumber *currentScore = [NSNumber numberWithInt:[_ballsLeftCounterLabel.text intValue]];
+    currentScore = [NSNumber numberWithInt:[currentScore intValue]-1];
+    
+    if(currentScore == [NSNumber numberWithInt:0]) {
+        // No balls left so game is over
         [self gameIsOver];
     } else {
-        [_scoreBoardLabel setText:[NSString stringWithFormat:@"%ld", (long)currentScore]];
+        // Still balls left update the score
+        [_ballsLeftCounterLabel setText:[currentScore stringValue]];
     }
 }
 
 -(void) gameIsOver {
+    // Get the score of score board
+    int64_t finalScore = [_ballPongedCounterLabel.text intValue];
+    
+    // Send score to Game Center leaderboard and check if there are achievements unlocked
+    [[GCManager sharedInstance] insertScoreIntoLeaderboard:finalScore];
+    [[GCManager sharedInstance] checkForAchievements:finalScore];
+    
+    // Inform the player
     UIAlertView *gameOverAlertView = [[UIAlertView alloc] initWithTitle:@"Game over" message:@"Je hebt geen ballen meer over!" delegate:self cancelButtonTitle:@"Hè, jammer!" otherButtonTitles:nil];
     [gameOverAlertView setDelegate:self];
     [gameOverAlertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"alertViewCancel");
     if (alertView.cancelButtonIndex == buttonIndex) {
         [self performSegueWithIdentifier:@"stopGameSegue" sender:self];
     }
@@ -128,21 +171,6 @@
     
     [session addInput:input];
     [session startRunning];
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 @end

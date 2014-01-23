@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PEc-9H-pGS">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
@@ -13,26 +14,26 @@
                         <viewControllerLayoutGuide type="bottom" id="SuQ-iT-OFc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DUP-oB-uym">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOy-4E-WMs" userLabel="previewCameraView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlA-yA-pWG" userLabel="gameView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-EP-kDj">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-EP-kDj">
                                         <rect key="frame" x="276" y="20" width="24" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="uNc-mX-l7h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <color key="textColor" red="0.88170855978260865" green="0.88170855978260865" blue="0.88170855978260865" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L44-aF-Zjs">
@@ -44,7 +45,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                         <state key="normal" title="X">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -55,17 +56,28 @@
                                         <rect key="frame" x="169" y="31" width="99" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-9T-Yti">
+                                        <rect key="frame" x="20" y="340" width="280" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="mJR-4A-15l"/>
+                                        </constraints>
+                                        <string key="text">Houd je vinger op het scherm om het balletje af te schieten. 
+
+Kantel het scherm om het balletje in beeld te houden en terug te slaan.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.88170855979999996" green="0.88170855979999996" blue="0.88170855979999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Houd je vinger op het scherm om het balletje af te schieten" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-9T-Yti">
-                                        <rect key="frame" x="20" y="494" width="280" height="54"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67d-iW-Pi9">
+                                        <rect key="frame" x="62" y="20" width="99" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="mJR-4A-15l"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.88170855979999996" green="0.88170855979999996" blue="0.88170855979999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -88,7 +100,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="BlA-yA-pWG" firstAttribute="bottom" secondItem="dOy-4E-WMs" secondAttribute="bottom" id="7uj-uV-j4o"/>
@@ -102,11 +114,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="clS-D1-bfR"/>
                     <connections>
+                        <outlet property="ballPongedCounterLabel" destination="67d-iW-Pi9" id="85F-Mc-fv4"/>
+                        <outlet property="ballsLeftCounterLabel" destination="ISv-EP-kDj" id="NzS-2i-QXQ"/>
                         <outlet property="gameView" destination="BlA-yA-pWG" id="3Kr-QX-3gp"/>
                         <outlet property="instructionLabel" destination="sVT-9T-Yti" id="7ZG-ij-6dP"/>
-                        <outlet property="longPressForShootingBall" destination="t2h-2r-2ky" id="myd-By-740"/>
+                        <outlet property="longPressForShootingBallRecognizer" destination="t2h-2r-2ky" id="Xdu-nU-GwH"/>
                         <outlet property="previewCameraView" destination="dOy-4E-WMs" id="Mt2-2h-xMt"/>
-                        <outlet property="scoreBoardLabel" destination="ISv-EP-kDj" id="IWi-aG-gUv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1x-w2-NmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,7 +136,7 @@
                         <viewControllerLayoutGuide type="bottom" id="a7z-eb-2K8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nXK-cY-Z8p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERRONPONG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ehU-UY-yX9">
@@ -137,22 +150,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-dO-sbz">
-                                <rect key="frame" x="20" y="493" width="280" height="55"/>
+                                <rect key="frame" x="20" y="405" width="280" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="S31-ZP-AZm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Start game (of swipe de bal omhoog)">
+                                <state key="normal" title="Start game">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9qq-zv-L80" kind="push" identifier="startGameSegue" id="g6N-CP-nNZ"/>
+                                    <segue destination="9qq-zv-L80" kind="push" identifier="startGameSegue" id="2LY-Kn-3Mr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6i-hc-Jeg">
+                                <rect key="frame" x="20" y="73" width="280" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Leaderboard &amp; Achievements">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showGameCenterLeaderboard:" destination="qDH-Xd-Im2" eventType="touchUpInside" id="F4N-Rm-n9d"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lLl-dO-sbz" firstAttribute="trailing" secondItem="ehU-UY-yX9" secondAttribute="trailing" id="2hM-aa-6ez"/>
@@ -162,14 +187,10 @@
                             <constraint firstAttribute="bottom" secondItem="lLl-dO-sbz" secondAttribute="bottom" constant="20" symbolic="YES" id="Zcw-hr-7aN"/>
                             <constraint firstItem="ehU-UY-yX9" firstAttribute="top" secondItem="nXK-cY-Z8p" secondAttribute="top" constant="20" symbolic="YES" id="iaV-HH-Kud"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="gHo-zz-p8B" appends="YES" id="Qss-dC-nKd"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="WvI-q3-9tr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFV-tE-89S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="gHo-zz-p8B"/>
             </objects>
             <point key="canvasLocation" x="2031" y="-9"/>
         </scene>
@@ -195,7 +216,7 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="r03-Zs-aaU"/>

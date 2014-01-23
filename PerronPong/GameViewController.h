@@ -19,12 +19,13 @@
 
 @property (weak, nonatomic) IBOutlet UIView *previewCameraView;
 @property (weak, nonatomic) IBOutlet UIView *gameView;
-@property (weak, nonatomic) IBOutlet UILabel *scoreBoardLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ballsLeftCounterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
-@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressForShootingBall;
+@property (weak, nonatomic) IBOutlet UILabel *ballPongedCounterLabel;
+@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressForShootingBallRecognizer;
 
 -(void) createBallOnLocation:(CGPoint)location;
--(void) updateGameScore;
+-(void) updateBallCounter;
 -(void) gameIsOver;
 
 @end
