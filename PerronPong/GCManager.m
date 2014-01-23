@@ -56,11 +56,11 @@ static GCManager *sharedHelper = nil;
 
 - (void) checkForAchievements:(int64_t)score {
     NSString *achievementIdentifier;
-    if (score >= 50) {
+    if (score >= 500) {
         achievementIdentifier = @"PerronPongMaster";
-    } else if (score >= 25) {
+    } else if (score >= 100) {
         achievementIdentifier = @"PerronPongPro";
-    } else if (score >= 10) {
+    } else if (score >= 25) {
         achievementIdentifier = @"PerronPongBeginner";
     }
     

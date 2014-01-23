@@ -33,7 +33,7 @@
     }
     
 	// Do any additional setup after loading the view.
-    _introBall = [[BallView alloc] initWithFrame:CGRectMake(208, 350, 60, 60) andColor:[UIColor colorWithRed:200 green:200 blue:200 alpha:1]];
+    _introBall = [[BallView alloc] initWithFrame:CGRectMake(208, 300, 60, 60) andColor:[UIColor colorWithRed:200 green:200 blue:200 alpha:1]];
     [self.view addSubview:_introBall];
     
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler)];

@@ -118,7 +118,7 @@ Kantel het scherm om het balletje in beeld te houden en terug te slaan.</string>
                         <outlet property="ballsLeftCounterLabel" destination="ISv-EP-kDj" id="NzS-2i-QXQ"/>
                         <outlet property="gameView" destination="BlA-yA-pWG" id="3Kr-QX-3gp"/>
                         <outlet property="instructionLabel" destination="sVT-9T-Yti" id="7ZG-ij-6dP"/>
-                        <outlet property="longPressForShootingBall" destination="t2h-2r-2ky" id="myd-By-740"/>
+                        <outlet property="longPressForShootingBallRecognizer" destination="t2h-2r-2ky" id="Xdu-nU-GwH"/>
                         <outlet property="previewCameraView" destination="dOy-4E-WMs" id="Mt2-2h-xMt"/>
                     </connections>
                 </viewController>

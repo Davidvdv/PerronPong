@@ -97,7 +97,9 @@
             // Ball passed by the player because the ball is out of bounds
             [self.delegate ballIsOutOfBounds];
         } else {
-            if(self.isInFront) [self.delegate ballIsSmashed];
+            if([self isInFront] && complete) {
+                [self.delegate ballIsSmashed];
+            }
             // Otherwise continue ponging
             [self ponging];
         }

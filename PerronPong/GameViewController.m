@@ -24,8 +24,8 @@
     [self startCameraPreview];
     
     // Init and add a longpress gesture recognizer to start the game
-    _longPressForShootingBall = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForShootingBallHandler)];
-    [self.gameView addGestureRecognizer:_longPressForShootingBall];
+    _longPressForShootingBallRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForShootingBallHandler)];
+    [self.gameView addGestureRecognizer:_longPressForShootingBallRecognizer];
     
     // Init the game motion manager
     _gameMotionManager = [[CMMotionManager alloc] init];
@@ -57,7 +57,6 @@
 #pragma mark - BallViewDelegate methods
 
 -(void)ballIsOutOfBounds {
-    
     // Stop de motion manager
     [_gameMotionManager stopDeviceMotionUpdates];
     
@@ -66,14 +65,10 @@
     _ball = nil;
     
     // Add longpress gesture recognizer so the player can add a new ball
-    [self.gameView addGestureRecognizer:_longPressForShootingBall];
+    [self.gameView addGestureRecognizer:_longPressForShootingBallRecognizer];
     
     // Update the HUD
     [self updateBallCounter];
-    
-    // Inform the player
-    UIAlertView *ballIsOutOfBoundsAlert = [[UIAlertView alloc] initWithTitle:@"Bal gemist!" message:@"Je hebt de bal gemist en daarom een bal verloren" delegate:nil cancelButtonTitle:@"Ik ga een nieuwe bal serveren" otherButtonTitles:nil, nil];
-    [ballIsOutOfBoundsAlert show];
 }
 
 -(void)ballIsSmashed {
@@ -88,13 +83,15 @@
 -(void)longPressForShootingBallHandler {
     
     // Get the location of the longpress
-    CGPoint location = [_longPressForShootingBall locationInView:self.gameView];
+    CGPoint location = [_longPressForShootingBallRecognizer locationInView:self.gameView];
+    location.x -= 150;
+    location.y -= 150;
     
     // Create a ball on the location
     [self createBallOnLocation:location];
     
     // Remove the longpress gesture recognizer to prevent adding a new ball
-    [self.gameView removeGestureRecognizer:_longPressForShootingBall];
+    [self.gameView removeGestureRecognizer:_longPressForShootingBallRecognizer];
     
     [_instructionLabel setHidden:YES];
 }
@@ -116,7 +113,7 @@
     [self.gameMotionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             double yaw = deviceMotion.rotationRate.x*15;
-            double roll = deviceMotion.rotationRate.y *10;
+            double roll = deviceMotion.attitude.roll*20;
             [_ball moveXBy:roll andYBy:yaw];
         });
     }];
